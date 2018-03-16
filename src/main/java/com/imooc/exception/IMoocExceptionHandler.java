@@ -9,40 +9,40 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.imooc.pojo.IMoocJSONResult;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class IMoocExceptionHandler {
 
 	public static final String IMOOC_ERROR_VIEW = "error";
 
+//	@ExceptionHandler(value = Exception.class)
+    public Object errorHandler(HttpServletRequest reqest, 
+    		HttpServletResponse response, Exception e) throws Exception {
+    	
+    	e.printStackTrace();
+    	
+		ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", e);
+        mav.addObject("url", reqest.getRequestURL());
+        mav.setViewName(IMOOC_ERROR_VIEW);
+        return mav;
+    }
+	
 //	@ExceptionHandler(value = Exception.class)
 //    public Object errorHandler(HttpServletRequest reqest, 
 //    		HttpServletResponse response, Exception e) throws Exception {
 //    	
 //    	e.printStackTrace();
 //    	
-//		ModelAndView mav = new ModelAndView();
-//        mav.addObject("exception", e);
-//        mav.addObject("url", reqest.getRequestURL());
-//        mav.setViewName(IMOOC_ERROR_VIEW);
-//        return mav;
+//    	if (isAjax(reqest)) {
+//    		return IMoocJSONResult.errorException(e.getMessage());
+//    	} else {
+//    		ModelAndView mav = new ModelAndView();
+//            mav.addObject("exception", e);
+//            mav.addObject("url", reqest.getRequestURL());
+//            mav.setViewName(IMOOC_ERROR_VIEW);
+//            return mav;
+//    	}
 //    }
-	
-	@ExceptionHandler(value = Exception.class)
-    public Object errorHandler(HttpServletRequest reqest, 
-    		HttpServletResponse response, Exception e) throws Exception {
-    	
-    	e.printStackTrace();
-    	
-    	if (isAjax(reqest)) {
-    		return IMoocJSONResult.errorException(e.getMessage());
-    	} else {
-    		ModelAndView mav = new ModelAndView();
-            mav.addObject("exception", e);
-            mav.addObject("url", reqest.getRequestURL());
-            mav.setViewName(IMOOC_ERROR_VIEW);
-            return mav;
-    	}
-    }
 	
 	/**
 	 * 
