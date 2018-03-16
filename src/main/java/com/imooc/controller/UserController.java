@@ -26,7 +26,7 @@ public class UserController {
 	@RequestMapping("/getUserJson")
 	public IMoocJSONResult getUserJson() {
 		User user = new User();
-		user.setName("张三");
+		user.setName("张三丰");
 		user.setPassword("123456");
 		user.setAge(13);
 		user.setBirthday(new Date(System.currentTimeMillis()));
