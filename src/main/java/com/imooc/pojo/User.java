@@ -1,6 +1,7 @@
 package com.imooc.pojo;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
